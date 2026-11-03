@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    
+    <!-- Google Fonts (Plus Jakarta Sans & Playfair Display untuk style 174) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- 1. COVER SECTION (Varian 174) -->
+        <section class="cover-section">
+            <div class="decor-glow"></div>
+
+            <div>
+                <!-- Monogram Inisial Mempelai -->
+                <div class="initials-badge">
+                    <div class="initial-circle" id="initBride">B</div>
+                    <span class="initial-amp">&amp;</span>
+                    <div class="initial-circle" id="initGroom">D</div>
+                </div>
+
+                <p class="wedding-label">Pernikahan Kami</p>
+                <h1 class="couple-names" id="coupleTitle">Bella &amp; Deni</h1>
+                <p class="wedding-quote" id="weddingQuote">
+                    “What counts in making a happy marriage is not so much how compatible you are, but how you deal with incompatibility...”
+                </p>
+            </div>
+
+            <div class="guest-box">
+                <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+                <div class="guest-name" id="guestName">Tamu Undangan</div>
+                <p class="guest-note">Jadilah bagian dari momen bahagia kami.</p>
+            </div>
+
+            <div>
+                <a href="#main-content" class="btn-open" id="btnOpen">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    Buka Undangan
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. COUNTDOWN TIMER SECTION -->
+        <section class="countdown-section" id="main-content">
+            <p class="section-title">Save The Date</p>
+            <h2 class="event-date" id="eventDateText">Sabtu, 12 Oktober 2027</h2>
+
+            <div class="timer-grid">
+                <div class="timer-box">
+                    <span class="timer-val" id="days">00</span>
+                    <span class="timer-unit">Hari</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-val" id="hours">00</span>
+                    <span class="timer-unit">Jam</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-val" id="minutes">00</span>
+                    <span class="timer-unit">Menit</span>
+                </div>
+                <div class="timer-box">
+                    <span class="timer-val" id="seconds">00</span>
+                    <span class="timer-unit">Detik</span>
+                </div>
+            </div>
+
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn-calendar" id="btnCalendar">
+                📅 Simpan di Kalender
+            </a>
+        </section>
+
+        <!-- 3. AMPLOP DIGITAL SECTION -->
+        <section class="digital-gift-section">
+            <p class="section-title">Ungkapan Tanda Kasih</p>
+            <h2 class="section-subtitle">Amplop Digital</h2>
+            <p class="section-desc">
+                Doa restu Anda merupakan karunia terindah bagi kami. Namun jika Anda ingin memberikan hadiah, Anda dapat menggunakan amplop digital di bawah ini:
+            </p>
+
+            <div class="gift-cards-container" id="giftCardsContainer">
+                <!-- Generasi Otomatis dari JS -->
+            </div>
+        </section>
+    </div>
+
+    <!-- AUDIO PLAYER & FLOATING CONTROLLER -->
+    <audio id="bgMusic" loop preload="metadata">
+        <source id="audioSource" src="" type="audio/mpeg">
+    </audio>
+
+    <button class="music-control-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Music">
+        <svg viewBox="0 0 24 24">
+            <path id="iconPath" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Nomor rekening berhasil disalin!</div>
+
+    <!-- External JavaScript Files -->
+    <script src="config.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
