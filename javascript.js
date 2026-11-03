@@ -12,14 +12,27 @@ function initApp() {
         if (document.getElementById('initBride')) document.getElementById('initBride').innerText = CONFIG.couple.brideInitial || CONFIG.couple.bride.charAt(0);
         if (document.getElementById('initGroom')) document.getElementById('initGroom').innerText = CONFIG.couple.groomInitial || CONFIG.couple.groom.charAt(0);
         
-        // Mengubah warna teks nama mempelai di cover menjadi soft gold/rose
-        if (document.getElementById('coupleTitle')) {
-            document.getElementById('coupleTitle').innerHTML = `
+        // --- PERBAIKAN: Memastikan elemen coupleTitle ada atau dibuat otomatis di cover ---
+        let coupleTitleEl = document.getElementById('coupleTitle');
+        if (!coupleTitleEl) {
+            // Cari elemen teks "THE WEDDING OF" di cover untuk menyisipkan nama di bawahnya secara otomatis
+            const weddingOfEl = document.querySelector('.tracking-widest, h2, .text-center'); 
+            if (weddingOfEl && weddingOfEl.parentNode) {
+                coupleTitleEl = document.createElement('div');
+                coupleTitleEl.id = 'coupleTitle';
+                coupleTitleEl.className = 'my-2 text-center';
+                weddingOfEl.parentNode.insertBefore(coupleTitleEl, weddingOfEl.nextSibling);
+            }
+        }
+
+        if (coupleTitleEl) {
+            coupleTitleEl.innerHTML = `
                 <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${CONFIG.wedding.pria.panggilan}</span> 
                 <span class="text-amber-300 font-serif text-xl">&amp;</span> 
                 <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${CONFIG.wedding.wanita.panggilan}</span>
             `;
         }
+        // -------------------------------------------------------------------------------
         
         if (document.getElementById('weddingQuote')) document.getElementById('weddingQuote').innerText = CONFIG.event.quote;
         if (document.getElementById('eventDateText')) document.getElementById('eventDateText').innerText = CONFIG.event.dateText;
