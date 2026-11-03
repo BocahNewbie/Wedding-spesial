@@ -12,27 +12,31 @@ function initApp() {
         if (document.getElementById('initBride')) document.getElementById('initBride').innerText = CONFIG.couple.brideInitial || CONFIG.couple.bride.charAt(0);
         if (document.getElementById('initGroom')) document.getElementById('initGroom').innerText = CONFIG.couple.groomInitial || CONFIG.couple.groom.charAt(0);
         
-        // --- PERBAIKAN: Memastikan elemen coupleTitle ada atau dibuat otomatis di cover ---
+        // --- MEMPERBAIKI PENAMPILAN NAMA MEMPELAI DI COVER ---
         let coupleTitleEl = document.getElementById('coupleTitle');
         if (!coupleTitleEl) {
-            // Cari elemen teks "THE WEDDING OF" di cover untuk menyisipkan nama di bawahnya secara otomatis
-            const weddingOfEl = document.querySelector('.tracking-widest, h2, .text-center'); 
-            if (weddingOfEl && weddingOfEl.parentNode) {
-                coupleTitleEl = document.createElement('div');
+            // Jika elemen tidak sengaja terhapus di index.html, buat otomatis di bawah teks cover
+            const coverTag = document.getElementById('cover-title-tag');
+            if (coverTag && coverTag.parentNode) {
+                coupleTitleEl = document.createElement('h1');
                 coupleTitleEl.id = 'coupleTitle';
-                coupleTitleEl.className = 'my-2 text-center';
-                weddingOfEl.parentNode.insertBefore(coupleTitleEl, weddingOfEl.nextSibling);
+                coupleTitleEl.className = 'font-serif text-3xl sm:text-4xl font-bold text-rose-50 leading-tight';
+                coverTag.parentNode.parentNode.insertBefore(coupleTitleEl, coverTag.parentNode.nextSibling);
             }
         }
 
-        if (coupleTitleEl) {
+        if (coupleTitleEl && CONFIG.wedding) {
+            // Mengambil data panggilan dari CONFIG.wedding.pria & wanita
+            const namaPria = CONFIG.wedding.pria ? CONFIG.wedding.pria.panggilan : CONFIG.couple.groom;
+            const namaWanita = CONFIG.wedding.wanita ? CONFIG.wedding.wanita.panggilan : CONFIG.couple.bride;
+
             coupleTitleEl.innerHTML = `
-                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${CONFIG.wedding.pria.panggilan}</span> 
+                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${namaPria}</span> 
                 <span class="text-amber-300 font-serif text-xl">&amp;</span> 
-                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${CONFIG.wedding.wanita.panggilan}</span>
+                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${namaWanita}</span>
             `;
         }
-        // -------------------------------------------------------------------------------
+        // ----------------------------------------------------
         
         if (document.getElementById('weddingQuote')) document.getElementById('weddingQuote').innerText = CONFIG.event.quote;
         if (document.getElementById('eventDateText')) document.getElementById('eventDateText').innerText = CONFIG.event.dateText;
@@ -131,7 +135,7 @@ function initApp() {
     }
 }
 
-/* Render Profil Mempelai (Warna disesuaikan ke Gold/Rose) */
+/* Render Profil Mempelai */
 function renderProfiles() {
     const profileContainer = document.getElementById('profile-container');
     if (!profileContainer || !CONFIG.wedding) return;
