@@ -1,0 +1,329 @@
+/* Smooth Scroll Global */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar Neon Blue */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4;
+}
+
+/* BACKGROUND UTAMA FIX SATU HALAMAN PENUH */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #020617;
+    color: #f1f5f9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, .font-serif {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+}
+
+.font-script {
+    font-family: 'Great Vibes', cursive;
+}
+
+/* KARTU KONTROL GLASSMORPHISM NEON BLUE */
+.neon-arch-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(6, 182, 212, 0.4);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #f1f5f9;
+    position: relative;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(6, 182, 212, 0.15),
+        inset 0 0 15px rgba(6, 182, 212, 0.05);
+    transition: all 0.3s ease;
+}
+
+.neon-arch-card:hover {
+    border-color: rgba(6, 182, 212, 0.7);
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.8),
+        0 0 35px rgba(6, 182, 212, 0.3),
+        inset 0 0 20px rgba(6, 182, 212, 0.1);
+}
+
+/* EFEK TULISAN NEON CYAN-PURPLE */
+.neon-credit {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neonGlowCyan 2s infinite alternate ease-in-out;
+}
+
+@keyframes neonGlowCyan {
+    0% {
+        filter: drop-shadow(0 0 2px rgba(6, 182, 212, 0.4)) 
+                drop-shadow(0 0 6px rgba(6, 182, 212, 0.6));
+        opacity: 0.85;
+    }
+    50% {
+        filter: drop-shadow(0 0 4px rgba(6, 182, 212, 0.8)) 
+                drop-shadow(0 0 12px rgba(6, 182, 212, 0.9))
+                drop-shadow(0 0 18px rgba(6, 182, 212, 0.5));
+        opacity: 1;
+    }
+    100% {
+        filter: drop-shadow(0 0 1px rgba(6, 182, 212, 0.3)) 
+                drop-shadow(0 0 4px rgba(6, 182, 212, 0.4));
+        opacity: 0.7;
+    }
+}
+
+/* EFEK KILAU SHIMMER TOMBOL */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.25) 50%,
+        transparent 70%
+    );
+    transform: rotate(30deg) translateX(-100%);
+    animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: rotate(30deg) translateX(100%);
+    }
+}
+
+/* ANIMASI MELAYANG & KUPU-KUPU */
+@keyframes floatAnimation {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.float-item {
+    animation: floatAnimation 4s ease-in-out infinite;
+}
+
+@keyframes butterflyFly {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(20px, -15px) rotate(6deg); }
+    66% { transform: translate(-15px, -25px) rotate(-4deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.butterfly {
+    animation: butterflyFly 7s ease-in-out infinite;
+}
+
+.spin-slow {
+    animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* AMPLOP DIGITAL / KARTU REKENING */
+.gift-card {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.gift-card:hover {
+    border-color: rgba(6, 182, 212, 0.7);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+.bank-badge {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.account-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.25rem;
+    font-family: monospace;
+}
+
+.account-holder {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+}
+
+.btn-copy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.4);
+    color: #38bdf8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-copy:hover {
+    background: #06b6d4;
+    color: #020617;
+}
+
+.btn-copy svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+/* FLOATING MUSIC CONTROL */
+.music-control-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(6, 182, 212, 0.6);
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.music-control-btn:hover {
+    transform: scale(1.1);
+    background: #06b6d4;
+    color: #020617;
+}
+
+.music-control-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #06b6d4;
+    color: #020617;
+    padding: 0.65rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* AMPLOP DIGITAL */
+.envelope-container {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.envelope-box {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #090d16 0%, #020617 100%);
+    border: 1.5px solid rgba(6, 182, 212, 0.5);
+    border-radius: 1.25rem;
+    padding: 2.5rem 1.5rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.envelope-box:hover {
+    border-color: rgba(6, 182, 212, 0.9);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);
+}
+
+.envelope-card-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-30px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+}
+
+.envelope-container.open .envelope-card-content {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    margin-top: 1.5rem;
+}
+
+.envelope-container.open .envelope-icon {
+    transform: rotate(180deg);
+    color: #a855f7;
+}
