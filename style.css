@@ -39,7 +39,7 @@ h1, h2, h3, .font-serif {
     font-family: 'Great Vibes', cursive;
 }
 
-/* KARTU ELEGANT SOFT & INTIM (Bukan Glassmorphism Kasar) */
+/* KARTU ELEGANT SOFT & INTIM */
 .neon-arch-card {
     background: rgba(26, 12, 17, 0.92);
     border: 1px solid rgba(251, 191, 36, 0.25);
@@ -130,7 +130,7 @@ h1, h2, h3, .font-serif {
     to { transform: rotate(360deg); }
 }
 
-/* KARTU REKENING BANK (CLEAN & INTIM) */
+/* KARTU REKENING BANK */
 .gift-card {
     background: rgba(35, 16, 23, 0.85);
     border: 1px solid rgba(251, 191, 36, 0.2);
@@ -253,51 +253,4 @@ h1, h2, h3, .font-serif {
 .toast.show {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
-}
-
-/* AMPLOP DIGITAL */
-.envelope-container {
-    position: relative;
-    width: 100%;
-    max-width: 440px;
-    margin: 0 auto;
-    cursor: pointer;
-}
-
-.envelope-box {
-    position: relative;
-    width: 100%;
-    background: linear-gradient(135deg, #1f0d14 0%, #14080b 100%);
-    border: 1.5px solid rgba(251, 191, 36, 0.3);
-    border-radius: 1.25rem;
-    padding: 2.5rem 1.5rem 1.5rem;
-    text-align: center;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
-    z-index: 20;
-    transition: all 0.3s ease;
-}
-
-.envelope-box:hover {
-    border-color: rgba(251, 191, 36, 0.6);
-}
-
-.envelope-card-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateY(-30px) scale(0.95);
-    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 10;
-}
-
-.envelope-container.open .envelope-card-content {
-    max-height: 1000px;
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    margin-top: 1.5rem;
-}
-
-.envelope-container.open .envelope-icon {
-    transform: rotate(180deg);
-    color: #fde047;
 }
