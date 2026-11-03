@@ -46,17 +46,16 @@
         </div>
     </div>
 
-    <!-- AUDIO BACKGROUND -->    
     <!-- AUDIO BACKGROUND -->
-<audio id="bgMusic" loop preload="auto">
-    <source id="audioSource" src="panahasmara.mp3" type="audio/mpeg">
-</audio>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="panahasmara.mp3" type="audio/mpeg">
+    </audio>
 
-<button class="music-control-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Music">
-    <svg viewBox="0 0 24 24">
-        <path id="iconPath" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-    </svg>
-</button>
+    <button class="music-control-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Music">
+        <svg viewBox="0 0 24 24">
+            <path id="iconPath" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+    </button>
 
     <!-- MAIN CONTENT -->
     <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000 ease-in-out py-12 space-y-6">
