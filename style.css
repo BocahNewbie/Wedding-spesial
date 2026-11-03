@@ -3,26 +3,26 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar Soft Red-Gold */
+/* Custom Scrollbar Soft Red & Gold */
 ::-webkit-scrollbar {
     width: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #0f0a0c;
+    background: #14080b;
 }
 ::-webkit-scrollbar-thumb {
-    background: #2a161b;
+    background: #38131d;
     border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #e11d48;
+    background: #f43f5e;
 }
 
-/* BACKGROUND UTAMA FIX SATU HALAMAN PENUH */
+/* BACKGROUND UTAMA */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #0f0a0c;
-    color: #fce7f3;
+    background-color: #14080b;
+    color: #fdf2f4;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -39,61 +39,38 @@ h1, h2, h3, .font-serif {
     font-family: 'Great Vibes', cursive;
 }
 
-/* KARTU KONTROL GLASSMORPHISM SOFT RED & GOLD */
+/* KARTU ELEGANT SOFT & INTIM (Bukan Glassmorphism Kasar) */
 .neon-arch-card {
-    background: rgba(22, 12, 16, 0.78);
-    border: 1px solid rgba(244, 63, 94, 0.22);
-    border-radius: 1.5rem;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    color: #fce7f3;
+    background: rgba(26, 12, 17, 0.92);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: 1.75rem;
+    color: #fdf2f4;
     position: relative;
     box-shadow: 
-        0 20px 40px -15px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(225, 29, 72, 0.08),
-        inset 0 0 15px rgba(244, 63, 94, 0.02);
+        0 20px 40px -15px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(244, 63, 94, 0.05);
     transition: all 0.4s ease;
 }
 
 .neon-arch-card:hover {
-    border-color: rgba(244, 63, 94, 0.45);
+    border-color: rgba(251, 191, 36, 0.45);
     box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(225, 29, 72, 0.15),
-        inset 0 0 20px rgba(244, 63, 94, 0.05);
+        0 25px 50px -12px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(251, 191, 36, 0.1);
 }
 
-/* EFEK TULISAN SOFT ROSE-GOLD GLOW */
+/* EFEK TULISAN SOFT GOLD & ROSE */
 .neon-credit {
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    background: linear-gradient(135deg, #f43f5e 0%, #fbbf24 100%);
+    background: linear-gradient(135deg, #fda4af 0%, #fde047 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: softGoldGlow 3s infinite alternate ease-in-out;
 }
 
-@keyframes softGoldGlow {
-    0% {
-        filter: drop-shadow(0 0 2px rgba(244, 63, 94, 0.3)) 
-                drop-shadow(0 0 5px rgba(251, 191, 36, 0.3));
-        opacity: 0.85;
-    }
-    50% {
-        filter: drop-shadow(0 0 4px rgba(244, 63, 94, 0.6)) 
-                drop-shadow(0 0 10px rgba(251, 191, 36, 0.5));
-        opacity: 1;
-    }
-    100% {
-        filter: drop-shadow(0 0 1px rgba(244, 63, 94, 0.2)) 
-                drop-shadow(0 0 4px rgba(251, 191, 36, 0.2));
-        opacity: 0.75;
-    }
-}
-
-/* EFEK KILAU SHIMMER TOMBOL */
+/* EFEK KILAU SHIMMER TOMBOL HALUS */
 .btn-shimmer {
     position: relative;
     overflow: hidden;
@@ -109,11 +86,11 @@ h1, h2, h3, .font-serif {
     background: linear-gradient(
         60deg,
         transparent 30%,
-        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.15) 50%,
         transparent 70%
     );
     transform: rotate(30deg) translateX(-100%);
-    animation: shimmer 4s infinite;
+    animation: shimmer 5s infinite;
 }
 
 @keyframes shimmer {
@@ -122,10 +99,10 @@ h1, h2, h3, .font-serif {
     }
 }
 
-/* ANIMASI MELAYANG & ORNAMEN */
+/* ORNAMEN & ANIMASI LEMBUT */
 @keyframes floatAnimation {
     0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(1.5deg); }
+    50% { transform: translateY(-6px) rotate(1deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
 
@@ -135,13 +112,13 @@ h1, h2, h3, .font-serif {
 
 @keyframes butterflyFly {
     0% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(15px, -12px) rotate(5deg); }
-    66% { transform: translate(-12px, -20px) rotate(-3deg); }
+    33% { transform: translate(12px, -10px) rotate(4deg); }
+    66% { transform: translate(-10px, -16px) rotate(-2deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
 }
 
 .butterfly {
-    animation: butterflyFly 8s ease-in-out infinite;
+    animation: butterflyFly 9s ease-in-out infinite;
 }
 
 .spin-slow {
@@ -153,10 +130,10 @@ h1, h2, h3, .font-serif {
     to { transform: rotate(360deg); }
 }
 
-/* KARTU REKENING BANK (ELEGANT & SOFT) */
+/* KARTU REKENING BANK (CLEAN & INTIM) */
 .gift-card {
-    background: rgba(22, 12, 16, 0.85);
-    border: 1px solid rgba(244, 63, 94, 0.25);
+    background: rgba(35, 16, 23, 0.85);
+    border: 1px solid rgba(251, 191, 36, 0.2);
     border-radius: 1rem;
     padding: 1.25rem;
     display: flex;
@@ -168,21 +145,20 @@ h1, h2, h3, .font-serif {
 
 .gift-card:hover {
     border-color: rgba(251, 191, 36, 0.5);
-    box-shadow: 0 0 20px rgba(244, 63, 94, 0.15);
 }
 
 .bank-badge {
     font-size: 1rem;
     font-weight: 700;
-    color: #fbbf24;
+    color: #fde047;
     letter-spacing: 1px;
-    margin-bottom: 0.5px;
+    margin-bottom: 0.5rem;
 }
 
 .account-number {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #fce7f3;
+    color: #fdf2f4;
     letter-spacing: 1.5px;
     margin-bottom: 0.25rem;
     font-family: monospace;
@@ -190,8 +166,7 @@ h1, h2, h3, .font-serif {
 
 .account-holder {
     font-size: 0.75rem;
-    color: #f43f5e;
-    opacity: 0.9;
+    color: #fda4af;
     margin-bottom: 1rem;
 }
 
@@ -201,9 +176,9 @@ h1, h2, h3, .font-serif {
     justify-content: center;
     gap: 0.5rem;
     width: 100%;
-    background: rgba(244, 63, 94, 0.08);
-    border: 1px solid rgba(244, 63, 94, 0.3);
-    color: #fb7185;
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: #fde047;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -213,8 +188,8 @@ h1, h2, h3, .font-serif {
 }
 
 .btn-copy:hover {
-    background: linear-gradient(135deg, #e11d48, #d97706);
-    color: #ffffff;
+    background: #fde047;
+    color: #14080b;
     border-color: transparent;
 }
 
@@ -232,23 +207,22 @@ h1, h2, h3, .font-serif {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(22, 12, 16, 0.9);
-    border: 1px solid rgba(244, 63, 94, 0.4);
-    color: #fbbf24;
+    background: rgba(26, 12, 17, 0.95);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: #fde047;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     z-index: 9999;
     transition: all 0.3s ease;
 }
 
 .music-control-btn:hover {
     transform: scale(1.1);
-    background: #e11d48;
-    color: #ffffff;
+    background: #fde047;
+    color: #14080b;
 }
 
 .music-control-btn svg {
@@ -263,13 +237,13 @@ h1, h2, h3, .font-serif {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: #e11d48;
-    color: #ffffff;
+    background: #fde047;
+    color: #14080b;
     padding: 0.65rem 1.5rem;
     border-radius: 9999px;
     font-size: 0.8rem;
     font-weight: 700;
-    box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4);
+    box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     pointer-events: none;
@@ -293,19 +267,18 @@ h1, h2, h3, .font-serif {
 .envelope-box {
     position: relative;
     width: 100%;
-    background: linear-gradient(135deg, #160a0f 0%, #0f0a0c 100%);
-    border: 1.5px solid rgba(244, 63, 94, 0.35);
+    background: linear-gradient(135deg, #1f0d14 0%, #14080b 100%);
+    border: 1.5px solid rgba(251, 191, 36, 0.3);
     border-radius: 1.25rem;
     padding: 2.5rem 1.5rem 1.5rem;
     text-align: center;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
     z-index: 20;
     transition: all 0.3s ease;
 }
 
 .envelope-box:hover {
     border-color: rgba(251, 191, 36, 0.6);
-    box-shadow: 0 0 25px rgba(244, 63, 94, 0.2);
 }
 
 .envelope-card-content {
@@ -326,5 +299,5 @@ h1, h2, h3, .font-serif {
 
 .envelope-container.open .envelope-icon {
     transform: rotate(180deg);
-    color: #fbbf24;
+    color: #fde047;
 }
