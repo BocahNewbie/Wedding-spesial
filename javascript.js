@@ -12,10 +12,9 @@ function initApp() {
         if (document.getElementById('initBride')) document.getElementById('initBride').innerText = CONFIG.couple.brideInitial || CONFIG.couple.bride.charAt(0);
         if (document.getElementById('initGroom')) document.getElementById('initGroom').innerText = CONFIG.couple.groomInitial || CONFIG.couple.groom.charAt(0);
         
-        // --- MEMPERBAIKI PENAMPILAN NAMA MEMPELAI DI COVER ---
+        // --- MENGGUNAKAN DATA DARI CONFIG.couple ---
         let coupleTitleEl = document.getElementById('coupleTitle');
         if (!coupleTitleEl) {
-            // Jika elemen tidak sengaja terhapus di index.html, buat otomatis di bawah teks cover
             const coverTag = document.getElementById('cover-title-tag');
             if (coverTag && coverTag.parentNode) {
                 coupleTitleEl = document.createElement('h1');
@@ -23,6 +22,18 @@ function initApp() {
                 coupleTitleEl.className = 'font-serif text-3xl sm:text-4xl font-bold text-rose-50 leading-tight';
                 coverTag.parentNode.parentNode.insertBefore(coupleTitleEl, coverTag.parentNode.nextSibling);
             }
+        }
+
+        if (coupleTitleEl && CONFIG.couple) {
+            // Mengambil langsung dari config.js bagian couple
+            const namaPria = CONFIG.couple.groom;
+            const namaWanita = CONFIG.couple.bride;
+
+            coupleTitleEl.innerHTML = `
+                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${namaPria}</span> 
+                <span class="text-amber-300 font-serif text-xl">&amp;</span> 
+                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${namaWanita}</span>
+            `;
         }
 
         if (coupleTitleEl && CONFIG.wedding) {
