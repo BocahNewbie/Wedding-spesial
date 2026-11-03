@@ -29,6 +29,7 @@ body {
     background-attachment: fixed;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 h1, h2, h3, .font-serif {
@@ -39,24 +40,64 @@ h1, h2, h3, .font-serif {
     font-family: 'Great Vibes', cursive;
 }
 
-/* KARTU ELEGANT SOFT & INTIM */
+/* KARTU ESTETIK ORGANIK (Bukan Kotak Kaku) */
 .neon-arch-card {
-    background: rgba(26, 12, 17, 0.92);
-    border: 1px solid rgba(251, 191, 36, 0.25);
-    border-radius: 1.75rem;
+    background: rgba(26, 12, 17, 0.94);
+    border: 1.5px solid rgba(251, 191, 36, 0.28);
+    /* Bentuk lengkungan artistik/organik yang estetik */
+    border-radius: 2.5rem 1rem 2.5rem 1rem;
     color: #fdf2f4;
     position: relative;
     box-shadow: 
-        0 20px 40px -15px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(244, 63, 94, 0.05);
+        0 25px 50px -15px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(244, 63, 94, 0.08);
     transition: all 0.4s ease;
 }
 
 .neon-arch-card:hover {
-    border-color: rgba(251, 191, 36, 0.45);
+    border-color: rgba(251, 191, 36, 0.5);
     box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(251, 191, 36, 0.1);
+        0 30px 60px -12px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(251, 191, 36, 0.12);
+}
+
+/* JEMBATAN / GARIS PENGHUBUNG ANTAR SECTION DENGAN IKON LOVE */
+.section-bridge {
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-bridge::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(251, 191, 36, 0.4), rgba(244, 63, 94, 0.4));
+}
+
+.floating-bridge-love {
+    position: absolute;
+    background: #14080b;
+    border: 1px solid rgba(251, 191, 36, 0.5);
+    color: #fde047;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.3);
+    animation: floatLove 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes floatLove {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.1); }
 }
 
 /* EFEK TULISAN SOFT GOLD & ROSE */
@@ -70,7 +111,7 @@ h1, h2, h3, .font-serif {
     -webkit-text-fill-color: transparent;
 }
 
-/* EFEK KILAU SHIMMER TOMBOL HALUS */
+/* KILAU TOMBOL HALUS */
 .btn-shimmer {
     position: relative;
     overflow: hidden;
@@ -99,42 +140,11 @@ h1, h2, h3, .font-serif {
     }
 }
 
-/* ORNAMEN & ANIMASI LEMBUT */
-@keyframes floatAnimation {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-6px) rotate(1deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-
-.float-item {
-    animation: floatAnimation 4s ease-in-out infinite;
-}
-
-@keyframes butterflyFly {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(12px, -10px) rotate(4deg); }
-    66% { transform: translate(-10px, -16px) rotate(-2deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-.butterfly {
-    animation: butterflyFly 9s ease-in-out infinite;
-}
-
-.spin-slow {
-    animation: spin 6s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
 /* KARTU REKENING BANK */
 .gift-card {
     background: rgba(35, 16, 23, 0.85);
     border: 1px solid rgba(251, 191, 36, 0.2);
-    border-radius: 1rem;
+    border-radius: 1.25rem;
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
@@ -199,7 +209,7 @@ h1, h2, h3, .font-serif {
     fill: currentColor;
 }
 
-/* FLOATING MUSIC CONTROL */
+/* TOMBOL MUSIK MENGAPUNG */
 .music-control-btn {
     position: fixed;
     bottom: 1.5rem;
