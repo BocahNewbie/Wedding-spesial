@@ -11,7 +11,16 @@ function initApp() {
 
         if (document.getElementById('initBride')) document.getElementById('initBride').innerText = CONFIG.couple.brideInitial || CONFIG.couple.bride.charAt(0);
         if (document.getElementById('initGroom')) document.getElementById('initGroom').innerText = CONFIG.couple.groomInitial || CONFIG.couple.groom.charAt(0);
-        if (document.getElementById('coupleTitle')) document.getElementById('coupleTitle').innerHTML = `<span class="font-script text-4xl sm:text-5xl font-normal text-cyan-300 block my-1">${CONFIG.wedding.pria.panggilan}</span> <span class="text-purple-400 font-serif text-xl">&amp;</span> <span class="font-script text-4xl sm:text-5xl font-normal text-cyan-300 block my-1">${CONFIG.wedding.wanita.panggilan}</span>`;
+        
+        // Mengubah warna teks nama mempelai di cover menjadi soft gold/rose
+        if (document.getElementById('coupleTitle')) {
+            document.getElementById('coupleTitle').innerHTML = `
+                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${CONFIG.wedding.pria.panggilan}</span> 
+                <span class="text-amber-300 font-serif text-xl">&amp;</span> 
+                <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${CONFIG.wedding.wanita.panggilan}</span>
+            `;
+        }
+        
         if (document.getElementById('weddingQuote')) document.getElementById('weddingQuote').innerText = CONFIG.event.quote;
         if (document.getElementById('eventDateText')) document.getElementById('eventDateText').innerText = CONFIG.event.dateText;
         if (document.getElementById('btnCalendar')) document.getElementById('btnCalendar').href = CONFIG.googleCalendarUrl;
@@ -109,7 +118,7 @@ function initApp() {
     }
 }
 
-/* Render Profil Mempelai */
+/* Render Profil Mempelai (Warna disesuaikan ke Gold/Rose) */
 function renderProfiles() {
     const profileContainer = document.getElementById('profile-container');
     if (!profileContainer || !CONFIG.wedding) return;
@@ -118,41 +127,41 @@ function renderProfiles() {
 
     profileContainer.innerHTML = `
         <div class="text-center space-y-3 mb-8">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-cyan-300">Pasangan Mempelai</h2>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-300">Pasangan Mempelai</h2>
         </div>
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="bg-slate-900/80 border border-cyan-500/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4">
+            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4">
                 <div class="space-y-4">
                     <div class="relative w-36 h-36 mx-auto">
-                        <img src="${p.foto}" class="w-full h-full rounded-full object-cover border-4 border-cyan-400 shadow-lg">
-                        <div class="absolute inset-0 rounded-full border-2 border-purple-500/40 transform scale-105"></div>
+                        <img src="${p.foto}" class="w-full h-full rounded-full object-cover border-4 border-amber-400/80 shadow-lg">
+                        <div class="absolute inset-0 rounded-full border-2 border-rose-400/40 transform scale-105"></div>
                     </div>
                     <div class="min-h-[72px] flex items-center justify-center">
-                        <h3 class="font-serif text-2xl font-bold text-slate-100 leading-snug">${p.nama}</h3>
+                        <h3 class="font-serif text-2xl font-bold text-rose-50 leading-snug">${p.nama}</h3>
                     </div>
-                    <p class="text-xs text-slate-400 leading-relaxed">${p.orangTua}</p>
+                    <p class="text-xs text-rose-200/70 leading-relaxed">${p.orangTua}</p>
                 </div>
                 <div class="pt-2">
-                    <a href="https://instagram.com/${p.instagram.replace('@','')}" target="_blank" class="inline-flex items-center space-x-2 text-xs text-cyan-400 hover:text-cyan-300 transition-colors bg-cyan-950/60 px-3.5 py-1.5 rounded-full border border-cyan-500/30">
-                        <i class="fa-brands fa-instagram text-cyan-400"></i><span>${p.instagram}</span>
+                    <a href="https://instagram.com/${p.instagram.replace('@','')}" target="_blank" class="inline-flex items-center space-x-2 text-xs text-amber-300 hover:text-amber-200 transition-colors bg-[#2a1219] px-3.5 py-1.5 rounded-full border border-amber-400/30">
+                        <i class="fa-brands fa-instagram text-amber-300"></i><span>${p.instagram}</span>
                     </a>
                 </div>
             </div>
 
-            <div class="bg-slate-900/80 border border-purple-500/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4">
+            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4">
                 <div class="space-y-4">
                     <div class="relative w-36 h-36 mx-auto">
-                        <img src="${w.foto}" class="w-full h-full rounded-full object-cover border-4 border-purple-400 shadow-lg">
-                        <div class="absolute inset-0 rounded-full border-2 border-cyan-500/40 transform scale-105"></div>
+                        <img src="${w.foto}" class="w-full h-full rounded-full object-cover border-4 border-amber-400/80 shadow-lg">
+                        <div class="absolute inset-0 rounded-full border-2 border-rose-400/40 transform scale-105"></div>
                     </div>
                     <div class="min-h-[72px] flex items-center justify-center">
-                        <h3 class="font-serif text-2xl font-bold text-slate-100 leading-snug">${w.nama}</h3>
+                        <h3 class="font-serif text-2xl font-bold text-rose-50 leading-snug">${w.nama}</h3>
                     </div>
-                    <p class="text-xs text-slate-400 leading-relaxed">${w.orangTua}</p>
+                    <p class="text-xs text-rose-200/70 leading-relaxed">${w.orangTua}</p>
                 </div>
                 <div class="pt-2">
-                    <a href="https://instagram.com/${w.instagram.replace('@','')}" target="_blank" class="inline-flex items-center space-x-2 text-xs text-purple-400 hover:text-purple-300 transition-colors bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-500/30">
-                        <i class="fa-brands fa-instagram text-purple-400"></i><span>${w.instagram}</span>
+                    <a href="https://instagram.com/${w.instagram.replace('@','')}" target="_blank" class="inline-flex items-center space-x-2 text-xs text-amber-300 hover:text-amber-200 transition-colors bg-[#2a1219] px-3.5 py-1.5 rounded-full border border-amber-400/30">
+                        <i class="fa-brands fa-instagram text-amber-300"></i><span>${w.instagram}</span>
                     </a>
                 </div>
             </div>
@@ -164,18 +173,18 @@ function renderProfiles() {
 function renderLoveStory() {
     const storyContainer = document.getElementById('story-container');
     if (!storyContainer || !CONFIG.loveStory) return;
-    storyContainer.innerHTML = '<div id="journey-line" class="absolute top-0 left-[-2px] w-[2px] bg-gradient-to-b from-cyan-400 via-sky-500 to-purple-600 transition-all duration-300 ease-out h-0"></div>';
+    storyContainer.innerHTML = '';
     CONFIG.loveStory.forEach((item) => {
         const card = document.createElement('div');
-        card.className = 'relative pl-2 space-y-2 group text-left';
+        card.className = 'relative pl-6 space-y-2 group text-left';
         card.innerHTML = `
-            <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-2 border-cyan-400 flex items-center justify-center shadow-sm group-hover:scale-125 transition-transform">
-                <div class="w-1.5 h-1.5 rounded-full bg-purple-400"></div>
+            <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-[#14080b] border-2 border-amber-400 flex items-center justify-center shadow-sm group-hover:scale-125 transition-transform">
+                <div class="w-1.5 h-1.5 rounded-full bg-rose-400"></div>
             </div>
-            <div class="bg-slate-900/90 border border-slate-800 p-5 rounded-2xl shadow-md hover:shadow-lg transition-all space-y-2">
-                <span class="px-3 py-1 bg-cyan-950 text-cyan-300 border border-cyan-500/30 text-xs font-bold rounded-full shadow-sm inline-block">${item.year}</span>
-                <h3 class="font-serif text-lg font-bold text-slate-100">${item.title}</h3>
-                <p class="text-xs text-slate-400 leading-relaxed pt-1">${item.description}</p>
+            <div class="bg-[#1f0d14] border border-amber-400/20 p-5 rounded-2xl shadow-md hover:shadow-lg transition-all space-y-2">
+                <span class="px-3 py-1 bg-[#2a1219] text-amber-300 border border-amber-400/30 text-xs font-bold rounded-full shadow-sm inline-block">${item.year}</span>
+                <h3 class="font-serif text-lg font-bold text-rose-50">${item.title}</h3>
+                <p class="text-xs text-rose-200/80 leading-relaxed pt-1">${item.description}</p>
             </div>
         `;
         storyContainer.appendChild(card);
@@ -189,18 +198,18 @@ function renderSchedules() {
     schedContainer.innerHTML = '';
     CONFIG.schedules.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-lg text-center space-y-4 group transition-all duration-300 hover:border-cyan-500/50 flex flex-col justify-between';
+        card.className = 'bg-[#1f0d14] border border-amber-400/20 rounded-2xl overflow-hidden shadow-lg text-center space-y-4 group transition-all duration-300 hover:border-amber-400/50 flex flex-col justify-between';
         card.innerHTML = `
             <div>
-                ${item.image ? `<div class="h-44 w-full overflow-hidden relative"><img src="${item.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent"></div></div>` : ''}
+                ${item.image ? `<div class="h-44 w-full overflow-hidden relative"><img src="${item.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-[#14080b] to-transparent"></div></div>` : ''}
                 <div class="p-5 space-y-2">
-                    <h3 class="font-serif text-2xl font-bold text-cyan-300">${item.name}</h3>
-                    <p class="text-cyan-400 text-sm font-semibold border-y border-slate-800 py-1 inline-block px-3">${item.time}</p>
-                    <p class="text-xs text-slate-400 leading-relaxed">${item.location}<br>${item.address}</p>
+                    <h3 class="font-serif text-2xl font-bold text-amber-300">${item.name}</h3>
+                    <p class="text-rose-200 text-sm font-semibold border-y border-amber-400/20 py-1 inline-block px-3">${item.time}</p>
+                    <p class="text-xs text-rose-200/70 leading-relaxed">${item.location}<br>${item.address}</p>
                 </div>
             </div>
             <div class="p-5 pt-0">
-                <a href="${item.mapsUrl || '#'}" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-2.5 bg-gradient-to-r from-cyan-500 to-purple-600 text-slate-950 font-bold text-xs rounded-xl hover:from-cyan-400 hover:to-purple-500 transition-all shadow-md">
+                <a href="${item.mapsUrl || '#'}" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-2.5 bg-gradient-to-r from-rose-500 via-pink-600 to-amber-500 text-white font-bold text-xs rounded-xl hover:from-rose-400 hover:to-amber-400 transition-all shadow-md">
                     <i class="fa-solid fa-map-location-dot text-xs"></i>
                     <span>Lokasi ${item.name}</span>
                 </a>
@@ -217,10 +226,10 @@ function renderGallery() {
     galleryGrid.innerHTML = '';
     CONFIG.gallery.forEach(url => {
         const wrap = document.createElement('div');
-        wrap.className = 'overflow-hidden rounded-2xl border border-slate-800 shadow-md group cursor-pointer relative';
+        wrap.className = 'overflow-hidden rounded-2xl border border-amber-400/20 shadow-md group cursor-pointer relative';
         wrap.innerHTML = `
             <img src="${url}" class="w-full h-44 object-cover group-hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-cyan-300 text-xl">
+            <div class="absolute inset-0 bg-[#14080b]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-amber-300 text-xl">
                 <i class="fa-solid fa-magnifying-glass-plus"></i>
             </div>
         `;
@@ -359,31 +368,31 @@ function fetchComments() {
     const commentsContainer = document.getElementById('comments-container');
     if (!commentsContainer) return;
     if (typeof CONFIG === 'undefined' || !CONFIG.scriptUrl || CONFIG.scriptUrl.includes("PASTER_URL")) {
-        commentsContainer.innerHTML = '<p class="text-xs text-slate-500 text-center">Belum ada ucapan tersimpan.</p>';
+        commentsContainer.innerHTML = '<p class="text-xs text-rose-200/50 text-center">Belum ada ucapan tersimpan.</p>';
         return;
     }
 
-    commentsContainer.innerHTML = '<p class="text-xs text-cyan-400 text-center">Memuat ucapan...</p>';
+    commentsContainer.innerHTML = '<p class="text-xs text-amber-300 text-center">Memuat ucapan...</p>';
 
     fetch(CONFIG.scriptUrl)
         .then(res => res.json())
         .then(data => {
             commentsContainer.innerHTML = '';
             if (!data || data.length === 0) {
-                commentsContainer.innerHTML = '<p class="text-xs text-slate-500 text-center">Belum ada ucapan. Jadilah yang pertama!</p>';
+                commentsContainer.innerHTML = '<p class="text-xs text-rose-200/50 text-center">Belum ada ucapan. Jadilah yang pertama!</p>';
                 return;
             }
 
             data.forEach(item => {
                 const el = document.createElement('div');
-                el.className = 'bg-slate-900/90 border border-slate-800 p-3.5 rounded-xl text-left space-y-1 shadow-sm';
+                el.className = 'bg-[#1f0d14] border border-amber-400/20 p-3.5 rounded-2xl text-left space-y-1 shadow-sm';
                 el.innerHTML = `
                     <div class="flex justify-between items-center">
-                        <span class="font-bold text-cyan-300 text-sm">${escapeHtml(item.name)}</span>
-                        <span class="text-[10px] px-2 py-0.5 rounded-full ${item.status === 'Hadir' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/30' : 'bg-slate-800 text-slate-400'}">${item.status}</span>
+                        <span class="font-bold text-amber-300 text-sm">${escapeHtml(item.name)}</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full ${item.status === 'Hadir' ? 'bg-[#2a1219] text-amber-300 border border-amber-400/30' : 'bg-[#14080b] text-rose-200/60'}">${item.status}</span>
                     </div>
-                    <p class="text-xs text-slate-300">${escapeHtml(item.message)}</p>
-                    <span class="text-[9px] text-slate-500 block pt-1">${item.date || ''}</span>
+                    <p class="text-xs text-rose-100">${escapeHtml(item.message)}</p>
+                    <span class="text-[9px] text-rose-200/50 block pt-1">${item.date || ''}</span>
                 `;
                 commentsContainer.appendChild(el);
             });
