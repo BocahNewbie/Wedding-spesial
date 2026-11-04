@@ -12,7 +12,6 @@ function initApp() {
         if (document.getElementById('initBride')) document.getElementById('initBride').innerText = CONFIG.couple.brideInitial || CONFIG.couple.bride.charAt(0);
         if (document.getElementById('initGroom')) document.getElementById('initGroom').innerText = CONFIG.couple.groomInitial || CONFIG.couple.groom.charAt(0);
         
-        // --- MENAMPILKAN NAMA MEMPELAI DI COVER & HERO SECTION ---
         let coupleTitleEl = document.getElementById('coupleTitle');
         if (!coupleTitleEl) {
             const coverTag = document.getElementById('cover-title-tag');
@@ -27,7 +26,6 @@ function initApp() {
         const namaPria = CONFIG.wedding && CONFIG.wedding.pria ? CONFIG.wedding.pria.panggilan : CONFIG.couple.groom;
         const namaWanita = CONFIG.wedding && CONFIG.wedding.wanita ? CONFIG.wedding.wanita.panggilan : CONFIG.couple.bride;
 
-        // Render di Cover
         if (coupleTitleEl && CONFIG.couple) {
             coupleTitleEl.innerHTML = `
                 <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${namaPria}</span> 
@@ -36,7 +34,6 @@ function initApp() {
             `;
         }
 
-        // Render di Hero Utama (Setelah Buka Undangan)
         const heroCoupleTitleEl = document.getElementById('heroCoupleTitle');
         if (heroCoupleTitleEl && CONFIG.couple) {
             heroCoupleTitleEl.innerHTML = `
@@ -45,7 +42,6 @@ function initApp() {
                 <span class="font-script text-4xl sm:text-6xl font-normal text-rose-200 block sm:inline my-1">${namaWanita}</span>
             `;
         }
-        // ---------------------------------------------------------
         
         if (document.getElementById('weddingQuote')) document.getElementById('weddingQuote').innerText = CONFIG.event.quote;
         if (document.getElementById('eventDateText')) document.getElementById('eventDateText').innerText = CONFIG.event.dateText;
@@ -78,7 +74,7 @@ function initApp() {
         }
     }
 
-    // 3. Listener Tombol Buka Undangan
+    // 3. Listener Tombol Buka Undangan & Inisialisasi AOS Animasi
     const openBtn = document.getElementById('btnOpen');
     if (openBtn) {
         openBtn.addEventListener('click', () => {
@@ -91,7 +87,17 @@ function initApp() {
                 if (cover) cover.style.display = 'none';
                 if (mainContent) {
                     mainContent.classList.remove('hidden');
-                    setTimeout(() => mainContent.classList.remove('opacity-0'), 50);
+                    setTimeout(() => {
+                        mainContent.classList.remove('opacity-0');
+                        // Inisialisasi Pustaka Animasi Scroll AOS
+                        if (typeof AOS !== 'undefined') {
+                            AOS.init({
+                                duration: 800,
+                                once: false,
+                                mirror: true
+                            });
+                        }
+                    }, 50);
                 }
             }, 800);
 
@@ -99,8 +105,9 @@ function initApp() {
         });
     }
 
-    // 4. Jalankan Timer
+    // 4. Jalankan Timer & Event Listener Interaktif Scroll
     startCountdown();
+    window.addEventListener('scroll', handleTimelineScroll);
 
     // 5. Setup RSVP Form Handler
     const rsvpForm = document.getElementById('rsvp-form');
@@ -144,6 +151,74 @@ function initApp() {
     }
 }
 
+/* Render Love Story Timeline Interaktif */
+function renderLoveStory() {
+    const storyContainer = document.getElementById('story-container');
+    if (!storyContainer || !CONFIG.loveStory) return;
+    
+    // Pertahankan elemen garis latar belakang
+    const lineBg = storyContainer.querySelector('.timeline-line-bg');
+    const lineProgress = storyContainer.querySelector('.timeline-line-progress');
+    
+    storyContainer.innerHTML = '';
+    if (lineBg) storyContainer.appendChild(lineBg);
+    if (lineProgress) storyContainer.appendChild(lineProgress);
+
+    CONFIG.loveStory.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'timeline-item relative pl-6 space-y-2 group text-left';
+        card.setAttribute('data-aos', 'fade-left');
+        card.setAttribute('data-aos-delay', (index * 150).toString());
+
+        card.innerHTML = `
+            <div class="timeline-dot absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-[#14080b] border-2 border-amber-400/40 flex items-center justify-center shadow-sm transition-all duration-500">
+                <div class="w-1.5 h-1.5 rounded-full bg-rose-400 opacity-40 dot-inner transition-all duration-500"></div>
+            </div>
+            <div class="bg-[#1f0d14] border border-amber-400/20 p-5 rounded-2xl shadow-md hover:shadow-lg transition-all space-y-2">
+                <span class="px-3 py-1 bg-[#2a1219] text-amber-300 border border-amber-400/30 text-xs font-bold rounded-full shadow-sm inline-block">${item.year}</span>
+                <h3 class="font-serif text-lg font-bold text-rose-50">${item.title}</h3>
+                <p class="text-xs text-rose-200/80 leading-relaxed pt-1">${item.description}</p>
+            </div>
+        `;
+        storyContainer.appendChild(card);
+    });
+}
+
+/* Logika Interaktif Scroll Timeline (Garis Menyala Saat Di-scroll) */
+function handleTimelineScroll() {
+    const container = document.getElementById('story-container');
+    const progressBar = document.getElementById('timelineProgress');
+    if (!container || !progressBar) return;
+
+    const rect = container.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Hitung posisi scroll terhadap container
+    if (rect.top < windowHeight && rect.bottom > 0) {
+        const totalHeight = rect.height;
+        const visibleY = windowHeight - rect.top;
+        let progress = (visibleY / totalHeight) * 100;
+        progress = Math.min(Math.max(progress, 0), 100);
+        
+        progressBar.style.height = `${progress}%`;
+
+        // Aktifkan efek menyala pada titik (dot) yang terlewati
+        const items = container.querySelectorAll('.timeline-item');
+        items.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            const dot = item.querySelector('.timeline-dot');
+            const dotInner = item.querySelector('.dot-inner');
+            if (itemRect.top < windowHeight * 0.75) {
+                dot.classList.add('active-dot');
+                if (dotInner) dotInner.classList.remove('opacity-40');
+            } else {
+                dot.classList.remove('active-dot');
+                if (dotInner) dotInner.classList.add('opacity-40');
+            }
+        });
+    }
+}
+
 /* Render Profil Mempelai */
 function renderProfiles() {
     const profileContainer = document.getElementById('profile-container');
@@ -156,7 +231,7 @@ function renderProfiles() {
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-300">Pasangan Mempelai</h2>
         </div>
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4 relative overflow-hidden">
+            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4 relative overflow-hidden" data-aos="zoom-in-right">
                 <div class="space-y-4">
                     <div class="relative w-36 h-36 mx-auto">
                         <img src="${p.foto}" class="w-full h-full rounded-full object-cover border-4 border-amber-400/80 shadow-lg">
@@ -174,7 +249,7 @@ function renderProfiles() {
                 </div>
             </div>
 
-            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4 relative overflow-hidden">
+            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4 relative overflow-hidden" data-aos="zoom-in-left">
                 <div class="space-y-4">
                     <div class="relative w-36 h-36 mx-auto">
                         <img src="${w.foto}" class="w-full h-full rounded-full object-cover border-4 border-amber-400/80 shadow-lg">
@@ -195,36 +270,15 @@ function renderProfiles() {
     `;
 }
 
-/* Render Love Story Timeline */
-function renderLoveStory() {
-    const storyContainer = document.getElementById('story-container');
-    if (!storyContainer || !CONFIG.loveStory) return;
-    storyContainer.innerHTML = '';
-    CONFIG.loveStory.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = 'relative pl-6 space-y-2 group text-left';
-        card.innerHTML = `
-            <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-[#14080b] border-2 border-amber-400 flex items-center justify-center shadow-sm group-hover:scale-125 transition-transform">
-                <div class="w-1.5 h-1.5 rounded-full bg-rose-400"></div>
-            </div>
-            <div class="bg-[#1f0d14] border border-amber-400/20 p-5 rounded-2xl shadow-md hover:shadow-lg transition-all space-y-2">
-                <span class="px-3 py-1 bg-[#2a1219] text-amber-300 border border-amber-400/30 text-xs font-bold rounded-full shadow-sm inline-block">${item.year}</span>
-                <h3 class="font-serif text-lg font-bold text-rose-50">${item.title}</h3>
-                <p class="text-xs text-rose-200/80 leading-relaxed pt-1">${item.description}</p>
-            </div>
-        `;
-        storyContainer.appendChild(card);
-    });
-}
-
 /* Render Jadwal Acara */
 function renderSchedules() {
     const schedContainer = document.getElementById('schedule-container');
     if (!schedContainer || !CONFIG.schedules) return;
     schedContainer.innerHTML = '';
-    CONFIG.schedules.forEach(item => {
+    CONFIG.schedules.forEach((item, index) => {
         const card = document.createElement('div');
         card.className = 'bg-[#1f0d14] border border-amber-400/20 rounded-2xl overflow-hidden shadow-lg text-center space-y-4 group transition-all duration-300 hover:border-amber-400/50 flex flex-col justify-between';
+        card.setAttribute('data-aos', index % 2 === 0 ? 'fade-right' : 'fade-left');
         card.innerHTML = `
             <div>
                 ${item.image ? `<div class="h-44 w-full overflow-hidden relative"><img src="${item.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute inset-0 bg-gradient-to-t from-[#14080b] to-transparent"></div></div>` : ''}
@@ -250,9 +304,11 @@ function renderGallery() {
     const galleryGrid = document.getElementById('gallery-grid');
     if (!galleryGrid || !CONFIG.gallery) return;
     galleryGrid.innerHTML = '';
-    CONFIG.gallery.forEach(url => {
+    CONFIG.gallery.forEach((url, idx) => {
         const wrap = document.createElement('div');
         wrap.className = 'overflow-hidden rounded-2xl border border-amber-400/20 shadow-md group cursor-pointer relative';
+        wrap.setAttribute('data-aos', 'zoom-in');
+        wrap.setAttribute('data-aos-delay', (idx * 100).toString());
         wrap.innerHTML = `
             <img src="${url}" class="w-full h-44 object-cover group-hover:scale-110 transition-transform duration-500">
             <div class="absolute inset-0 bg-[#14080b]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-amber-300 text-xl">
