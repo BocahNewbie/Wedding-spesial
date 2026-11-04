@@ -40,25 +40,59 @@ h1, h2, h3, .font-serif {
     font-family: 'Great Vibes', cursive;
 }
 
-/* KARTU ESTETIK ORGANIK (Bukan Kotak Kaku) */
+/* KARTU ESTETIK FLORAL ARCH CARD */
 .neon-arch-card {
     background: rgba(26, 12, 17, 0.94);
-    border: 1.5px solid rgba(251, 191, 36, 0.28);
-    /* Bentuk lengkungan artistik/organik yang estetik */
-    border-radius: 2.5rem 1rem 2.5rem 1rem;
+    border: 1.5px solid rgba(251, 191, 36, 0.35);
+    /* Bentuk lengkungan melengkung klasik & artistik */
+    border-radius: 2rem 0.5rem 2rem 0.5rem;
     color: #fdf2f4;
     position: relative;
     box-shadow: 
         0 25px 50px -15px rgba(0, 0, 0, 0.7),
-        0 0 25px rgba(244, 63, 94, 0.08);
+        0 0 25px rgba(244, 63, 94, 0.1);
     transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+/* Bingkai Putus-Putus / Border Dalam */
+.neon-arch-card::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(251, 191, 36, 0.25);
+    border-radius: 1.75rem 0.35rem 1.75rem 0.35rem;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .neon-arch-card:hover {
-    border-color: rgba(251, 191, 36, 0.5);
+    border-color: rgba(251, 191, 36, 0.6);
     box-shadow: 
         0 30px 60px -12px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(251, 191, 36, 0.12);
+        0 0 30px rgba(251, 191, 36, 0.15);
+}
+
+/* ORNAMEN BUNGA DI SUDUT BOX */
+.floral-corner {
+    position: absolute;
+    color: rgba(251, 191, 36, 0.45);
+    font-size: 1.4rem;
+    z-index: 2;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.floral-corner.top-left {
+    top: 12px;
+    left: 14px;
+    transform: rotate(-45deg);
+}
+
+.floral-corner.bottom-right {
+    bottom: 12px;
+    right: 14px;
+    transform: rotate(135deg);
 }
 
 /* JEMBATAN / GARIS PENGHUBUNG ANTAR SECTION DENGAN IKON LOVE */
