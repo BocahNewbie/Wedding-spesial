@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS CSS (Efek Scroll Melayang) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <!-- Linked External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,7 +23,6 @@
         <div class="absolute inset-0 bg-[#14080b]/85 backdrop-blur-md"></div>
 
         <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-8 text-center space-y-6 my-auto">
-            <!-- Ornamen Bunga Sudut Cover -->
             <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
             <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
 
@@ -64,9 +65,8 @@
     <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000 ease-in-out py-12 space-y-6">
 
         <!-- HERO SECTION -->
-        <section id="sec-hero" class="relative px-4 sm:px-6">
+        <section id="sec-hero" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 text-center space-y-6 py-12">
-                <!-- Ornamen Bunga Sudut -->
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
 
@@ -78,9 +78,7 @@
                     <i class="fa-solid fa-diamond text-[8px] text-amber-400"></i>
                 </div>
 
-                <!-- DITAMBAHKAN: Judul Nama Mempelai di Hero Utama -->
                 <h1 id="heroCoupleTitle" class="font-serif text-3xl sm:text-5xl font-bold text-rose-50 leading-tight"></h1>
-
                 <h2 id="eventDateText" class="text-amber-200/90 font-medium text-sm border-y border-amber-400/20 py-2 inline-block px-4"></h2>
 
                 <!-- COUNTDOWN -->
@@ -112,12 +110,12 @@
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
         <!-- QUOTE SECTION -->
-        <section id="sec-quote" class="relative px-4 sm:px-6">
+        <section id="sec-quote" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 text-center space-y-4">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -129,12 +127,12 @@
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
         <!-- PROFIL MEMPELAI SECTION -->
-        <section id="sec-mempelai" class="relative px-4 sm:px-6">
+        <section id="sec-mempelai" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 space-y-8">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -144,12 +142,12 @@
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
-        <!-- KISAH CINTA (TIMELINE) -->
-        <section id="sec-story" class="relative px-4 sm:px-6">
+        <!-- KISAH CINTA (TIMELINE INTERAKTIF) -->
+        <section id="sec-story" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 space-y-8">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -159,17 +157,21 @@
                     <p class="text-rose-200/70 text-xs">Perjalanan Kasih</p>
                 </div>
                 
-                <div class="relative pl-6 sm:pl-8 border-l-2 border-amber-400/30 space-y-8 ml-2 sm:ml-4" id="story-container"></div>
+                <!-- Timeline Container dengan Garis Progresif -->
+                <div class="interactive-timeline relative pl-6 sm:pl-8 space-y-8 ml-2 sm:ml-4" id="story-container">
+                    <div class="timeline-line-bg"></div>
+                    <div class="timeline-line-progress" id="timelineProgress"></div>
+                </div>
             </div>
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
         <!-- RANGKAIAN ACARA -->
-        <section id="sec-acara" class="relative px-4 sm:px-6">
+        <section id="sec-acara" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 space-y-8">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -183,12 +185,12 @@
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
         <!-- GALERI FOTO -->
-        <section id="sec-galeri" class="relative px-4 sm:px-6">
+        <section id="sec-galeri" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 space-y-8">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -201,12 +203,12 @@
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
         <!-- AMPLOP DIGITAL SECTION -->
-        <section id="sec-amplop" class="relative px-4 sm:px-6">
+        <section id="sec-amplop" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 text-center space-y-6">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -221,12 +223,12 @@
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
         <!-- RSVP & UCAPAN -->
-        <section id="sec-rsvp" class="relative px-4 sm:px-6">
+        <section id="sec-rsvp" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 space-y-8">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -260,12 +262,12 @@
         </section>
 
         <!-- JEMBATAN ANTAR SECTION -->
-        <div class="section-bridge">
+        <div class="section-bridge" data-aos="zoom-in" data-aos-duration="800">
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
         <!-- UCAPAN TERIMA KASIH -->
-        <section id="sec-thanks" class="relative px-4 sm:px-6">
+        <section id="sec-thanks" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card text-center p-8 sm:p-10 space-y-4">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
                 <div class="floral-corner bottom-right"><i class="fa-solid fa-spa"></i></div>
@@ -306,6 +308,8 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast">Nomor rekening berhasil disalin!</div>
 
+    <!-- AOS JS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="config.js"></script>
     <script src="javascript.js"></script>
 </body>
