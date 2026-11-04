@@ -12,7 +12,7 @@ function initApp() {
         if (document.getElementById('initBride')) document.getElementById('initBride').innerText = CONFIG.couple.brideInitial || CONFIG.couple.bride.charAt(0);
         if (document.getElementById('initGroom')) document.getElementById('initGroom').innerText = CONFIG.couple.groomInitial || CONFIG.couple.groom.charAt(0);
         
-        // --- MENAMPILKAN NAMA MEMPELAI DI COVER ---
+        // --- MENAMPILKAN NAMA MEMPELAI DI COVER & HERO SECTION ---
         let coupleTitleEl = document.getElementById('coupleTitle');
         if (!coupleTitleEl) {
             const coverTag = document.getElementById('cover-title-tag');
@@ -24,19 +24,28 @@ function initApp() {
             }
         }
 
-        if (coupleTitleEl && CONFIG.couple) {
-            // Mengambil langsung dari objek CONFIG.couple (nama panggilan/panggilan depan)
-            // Anda bisa mengubah isi 'groom' & 'bride' di config.js menjadi nama panggilan jika ingin disingkat
-            const namaPria = CONFIG.wedding && CONFIG.wedding.pria ? CONFIG.wedding.pria.panggilan : CONFIG.couple.groom;
-            const namaWanita = CONFIG.wedding && CONFIG.wedding.wanita ? CONFIG.wedding.wanita.panggilan : CONFIG.couple.bride;
+        const namaPria = CONFIG.wedding && CONFIG.wedding.pria ? CONFIG.wedding.pria.panggilan : CONFIG.couple.groom;
+        const namaWanita = CONFIG.wedding && CONFIG.wedding.wanita ? CONFIG.wedding.wanita.panggilan : CONFIG.couple.bride;
 
+        // Render di Cover
+        if (coupleTitleEl && CONFIG.couple) {
             coupleTitleEl.innerHTML = `
                 <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${namaPria}</span> 
                 <span class="text-amber-300 font-serif text-xl">&amp;</span> 
                 <span class="font-script text-4xl sm:text-5xl font-normal text-rose-200 block my-1">${namaWanita}</span>
             `;
         }
-        // ------------------------------------------
+
+        // Render di Hero Utama (Setelah Buka Undangan)
+        const heroCoupleTitleEl = document.getElementById('heroCoupleTitle');
+        if (heroCoupleTitleEl && CONFIG.couple) {
+            heroCoupleTitleEl.innerHTML = `
+                <span class="font-script text-4xl sm:text-6xl font-normal text-rose-200 block sm:inline my-1">${namaPria}</span> 
+                <span class="text-amber-300 font-serif text-xl sm:text-2xl mx-2">&amp;</span> 
+                <span class="font-script text-4xl sm:text-6xl font-normal text-rose-200 block sm:inline my-1">${namaWanita}</span>
+            `;
+        }
+        // ---------------------------------------------------------
         
         if (document.getElementById('weddingQuote')) document.getElementById('weddingQuote').innerText = CONFIG.event.quote;
         if (document.getElementById('eventDateText')) document.getElementById('eventDateText').innerText = CONFIG.event.dateText;
@@ -147,7 +156,7 @@ function renderProfiles() {
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-300">Pasangan Mempelai</h2>
         </div>
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4">
+            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4 relative overflow-hidden">
                 <div class="space-y-4">
                     <div class="relative w-36 h-36 mx-auto">
                         <img src="${p.foto}" class="w-full h-full rounded-full object-cover border-4 border-amber-400/80 shadow-lg">
@@ -165,7 +174,7 @@ function renderProfiles() {
                 </div>
             </div>
 
-            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4">
+            <div class="bg-[#1f0d14] border border-amber-400/30 p-6 rounded-3xl text-center shadow-md hover:shadow-xl transition-all h-full flex flex-col justify-between space-y-4 relative overflow-hidden">
                 <div class="space-y-4">
                     <div class="relative w-36 h-36 mx-auto">
                         <img src="${w.foto}" class="w-full h-full rounded-full object-cover border-4 border-amber-400/80 shadow-lg">
