@@ -44,7 +44,6 @@ h1, h2, h3, .font-serif {
 .neon-arch-card {
     background: rgba(26, 12, 17, 0.94);
     border: 1.5px solid rgba(251, 191, 36, 0.35);
-    /* Bentuk lengkungan melengkung klasik & artistik */
     border-radius: 2rem 0.5rem 2rem 0.5rem;
     color: #fdf2f4;
     position: relative;
@@ -55,7 +54,6 @@ h1, h2, h3, .font-serif {
     overflow: hidden;
 }
 
-/* Bingkai Putus-Putus / Border Dalam */
 .neon-arch-card::before {
     content: '';
     position: absolute;
@@ -93,6 +91,44 @@ h1, h2, h3, .font-serif {
     bottom: 12px;
     right: 14px;
     transform: rotate(135deg);
+}
+
+/* TIMELINE KISAH CINTA INTERAKTIF */
+.interactive-timeline {
+    position: relative;
+}
+
+.timeline-line-bg {
+    position: absolute;
+    left: -24px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: rgba(251, 191, 36, 0.15);
+    border-radius: 9999px;
+}
+
+.timeline-line-progress {
+    position: absolute;
+    left: -24px;
+    top: 10px;
+    width: 2px;
+    height: 0%;
+    background: linear-gradient(to bottom, #fbbf24, #f43f5e);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
+    border-radius: 9999px;
+    transition: height 0.1s linear;
+}
+
+.timeline-dot.active-dot {
+    border-color: #fbbf24 !important;
+    box-shadow: 0 0 12px rgba(251, 191, 36, 0.9);
+    transform: scale(1.2);
+}
+
+.timeline-dot.active-dot .dot-inner {
+    background-color: #fbbf24 !important;
+    opacity: 1 !important;
 }
 
 /* JEMBATAN / GARIS PENGHUBUNG ANTAR SECTION DENGAN IKON LOVE */
