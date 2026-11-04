@@ -89,7 +89,6 @@ function initApp() {
                     mainContent.classList.remove('hidden');
                     setTimeout(() => {
                         mainContent.classList.remove('opacity-0');
-                        // Inisialisasi Pustaka Animasi Scroll AOS
                         if (typeof AOS !== 'undefined') {
                             AOS.init({
                                 duration: 800,
@@ -151,12 +150,69 @@ function initApp() {
     }
 }
 
+/* Render Kartu Rekening Bank di Dalam Amplop Digital */
+function renderBankCards() {
+    const container = document.getElementById('giftCardsContainer');
+    if (!container || !CONFIG.bankAccounts) return;
+
+    container.innerHTML = `
+        <div class="gift-cards-grid grid grid-cols-1 sm:grid-cols-2 gap-4">
+            ${CONFIG.bankAccounts.map(acc => `
+                <div class="gift-card">
+                    <div class="bank-badge">${acc.bankName || acc.bank}</div>
+                    <div class="account-number" id="${acc.id}">${acc.accountNumber || acc.number}</div>
+                    <div class="account-holder">${acc.accountHolder || ('a.n. ' + acc.owner)}</div>
+                    <button class="btn-copy" onclick="event.stopPropagation(); copyToClipboard('${acc.id}', '${acc.bankName || acc.bank}')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                        </svg>
+                        Salin Rekening
+                    </button>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+/* LOGIKA KELUAR-MASUK AMPLOP DIGITAL INTERAKTIF */
+function toggleEnvelope() {
+    const wrapper = document.getElementById('envelopeWrapper');
+    const hint = document.getElementById('envelopeHint');
+    if (!wrapper) return;
+
+    wrapper.classList.toggle('is-open');
+
+    if (wrapper.classList.contains('is-open')) {
+        if (hint) hint.innerText = "Klik amplop untuk menutup kembali";
+        createSparkles();
+    } else {
+        if (hint) hint.innerText = "Klik amplop untuk membuka";
+    }
+}
+
+/* Efek Sparkle Emas saat Amplop Dibuka */
+function createSparkles() {
+    const container = document.getElementById('sparklesContainer');
+    if (!container) return;
+    container.innerHTML = '';
+
+    for (let i = 0; i < 12; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle-particle';
+        sparkle.style.left = `${Math.random() * 80 + 10}%`;
+        sparkle.style.top = `${Math.random() * 50 + 20}%`;
+        sparkle.style.animationDelay = `${Math.random() * 0.4}s`;
+        container.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 1200);
+    }
+}
+
 /* Render Love Story Timeline Interaktif */
 function renderLoveStory() {
     const storyContainer = document.getElementById('story-container');
     if (!storyContainer || !CONFIG.loveStory) return;
     
-    // Pertahankan elemen garis latar belakang
     const lineBg = storyContainer.querySelector('.timeline-line-bg');
     const lineProgress = storyContainer.querySelector('.timeline-line-progress');
     
@@ -193,7 +249,6 @@ function handleTimelineScroll() {
     const rect = container.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Hitung posisi scroll terhadap container
     if (rect.top < windowHeight && rect.bottom > 0) {
         const totalHeight = rect.height;
         const visibleY = windowHeight - rect.top;
@@ -202,7 +257,6 @@ function handleTimelineScroll() {
         
         progressBar.style.height = `${progress}%`;
 
-        // Aktifkan efek menyala pada titik (dot) yang terlewati
         const items = container.querySelectorAll('.timeline-item');
         items.forEach(item => {
             const itemRect = item.getBoundingClientRect();
@@ -328,26 +382,6 @@ function openGalleryModal(url) {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
     }
-}
-
-/* Render Kartu Rekening Bank */
-function renderBankCards() {
-    const container = document.getElementById('giftCardsContainer');
-    if (!container || !CONFIG.bankAccounts) return;
-
-    container.innerHTML = CONFIG.bankAccounts.map(acc => `
-        <div class="gift-card">
-            <div class="bank-badge">${acc.bankName || acc.bank}</div>
-            <div class="account-number" id="${acc.id}">${acc.accountNumber || acc.number}</div>
-            <div class="account-holder">${acc.accountHolder || ('a.n. ' + acc.owner)}</div>
-            <button class="btn-copy" onclick="copyToClipboard('${acc.id}', '${acc.bankName || acc.bank}')">
-                <svg viewBox="0 0 24 24">
-                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                </svg>
-                Salin Rekening
-            </button>
-        </div>
-    `).join('');
 }
 
 /* Logika Hitung Mundur Waktu */
