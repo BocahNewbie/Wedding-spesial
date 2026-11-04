@@ -157,7 +157,6 @@
                     <p class="text-rose-200/70 text-xs">Perjalanan Kasih</p>
                 </div>
                 
-                <!-- Timeline Container dengan Garis Progresif -->
                 <div class="interactive-timeline relative pl-6 sm:pl-8 space-y-8 ml-2 sm:ml-4" id="story-container">
                     <div class="timeline-line-bg"></div>
                     <div class="timeline-line-progress" id="timelineProgress"></div>
@@ -207,7 +206,7 @@
             <div class="floating-bridge-love"><i class="fa-solid fa-heart text-xs"></i></div>
         </div>
 
-        <!-- AMPLOP DIGITAL SECTION -->
+        <!-- AMPLOP DIGITAL SECTION (ANIMASI 3D DARIDALAM AMPLOP) -->
         <section id="sec-amplop" class="relative px-4 sm:px-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="relative z-10 w-full max-w-xl mx-auto neon-arch-card p-6 sm:p-10 text-center space-y-6">
                 <div class="floral-corner top-left"><i class="fa-solid fa-spa"></i></div>
@@ -215,10 +214,35 @@
 
                 <div class="space-y-2">
                     <h2 class="font-serif text-3xl font-bold text-amber-300">Amplop Digital</h2>
-                    <p class="text-rose-200/80 text-xs">Doa restu Anda merupakan karunia terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat menggunakan amplop digital di bawah ini:</p>
+                    <p class="text-rose-200/80 text-xs">Doa restu Anda merupakan karunia terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat menyalurkannya melalui amplop di bawah ini:</p>
                 </div>
 
-                <div class="gift-cards-container space-y-4" id="giftCardsContainer"></div>
+                <!-- WRAPPER UTAMA AMPLOP INTERAKTIF -->
+                <div class="envelope-wrapper my-6" id="envelopeWrapper" onclick="toggleEnvelope()">
+                    <div class="sparkles-container" id="sparklesContainer"></div>
+
+                    <div class="envelope-box">
+                        <!-- Dinding Belakang Amplop -->
+                        <div class="envelope-back"></div>
+
+                        <!-- WADAH KARTU REKENING (Tersimpan 100% di Dalam) -->
+                        <div class="envelope-cards-stage" id="giftCardsContainer">
+                            <!-- Kartu Di-render dari javascript.js -->
+                        </div>
+
+                        <!-- Saku Depan Amplop -->
+                        <div class="envelope-pocket"></div>
+
+                        <!-- Lipatan Atas Amplop (Flap) -->
+                        <div class="envelope-flap">
+                            <div class="wax-seal">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-[11px] text-amber-300/80 italic mt-4 animate-pulse" id="envelopeHint">Klik amplop untuk membuka / menutup</p>
+                </div>
             </div>
         </section>
 
